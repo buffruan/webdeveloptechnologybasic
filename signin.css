@@ -1,0 +1,8 @@
+body{font-family:'站酷快乐体2016修订版','Arial','黑体'}
+body{background-color:#AFC7BF}
+h1{display:flex;justify-content: center;}
+h2{display:flex;justify-content: center;margin-bottom: 300px;}
+.username{display:flex;justify-content: center;}
+.password{display:flex;justify-content: center;}
+.confirm{display:flex;justify-content: center;}
+.signup{display:flex;justify-content: center;}
