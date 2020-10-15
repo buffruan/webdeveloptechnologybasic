@@ -1,42 +1,44 @@
 body {
-    font-family: '站酷快乐体2016修订版', 'Arial', '黑体';
-    background-color: #FFF1DD
+    background-color: #FFF1DD;
 }
 
-h1 {
+.name {
     display: flex;
     justify-content: center;
 }
 
-h2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 300px;
-}
-
-.username {
+.tel {
     display: flex;
     justify-content: center;
 }
 
-.password {
+.email {
     display: flex;
     justify-content: center;
 }
 
-.confirm {
+.addr {
     display: flex;
     justify-content: center;
 }
 
-.signup {
+.qq {
     display: flex;
     justify-content: center;
 }
 
-p {
+.bir {
     display: flex;
     justify-content: center;
-    font-family: 'Arial';
-    color: #dfd3c2;
+}
+
+.confirm-add {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.add-back {
+    display: flex;
+    justify-content: center;
 }
