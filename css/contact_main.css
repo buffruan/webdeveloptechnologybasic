@@ -27,7 +27,7 @@ h1 {
 .contacttable td,
 .contacttable th {
     border: 5px solid #a85e5e;
-    border-width: 5 5 5 5px;
+    border-width:5px;
     font-size: inherit;
     margin: 0;
     overflow: visible;
