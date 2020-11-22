@@ -1,0 +1,45 @@
+body {
+    font-family: '站酷快乐体2016修订版', 'Arial', '黑体';
+    background-color: #FFF1DD
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+.add {
+    /*
+    display: flex;
+    justify-content: center;
+    */
+    margin-left: 60%
+}
+.contacttable {
+    display: flex;
+    justify-content: center;
+    border-collapse: collapse;
+    border-spacing: 5px;
+    empty-cells: show;
+    border: 0px solid #cbcbcb;
+}
+
+.contacttable td,
+.contacttable th {
+    border: 5px solid #a85e5e;
+    border-width:5px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .5em 1em;
+}
+
+.contacttable thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.contacttable td {
+    background-color: transparent;
+}
