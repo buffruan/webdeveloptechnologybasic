@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+    <title>个人通讯录管理系统Ver0.1.4</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<link rel="stylesheet" type="text/css" href="/contact_add.css">
+<form name="addform" onsubmit="return check()" th:action="@{/contact_add/post}" method="post" th:object="${one}">
+    <table class="table table-hover table-bordered">
+        <tr>
+            <th>姓名</th>
+            <td><input type="text" name="" id="name" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <th>电话</th>
+            <td><input type="text" name="" id="tel" onblur="checkNumber()" th:field="*{tel}"/></td>
+        </tr>
+        <tr>
+            <th>邮箱</th>
+            <td><input type="text" name="" id="email" onblur="checkEmail()" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <th>住址</th>
+            <td><input type="text" name="" id="addr" th:field="*{addr}"/></td>
+        </tr>
+        <tr>
+            <th>QQ</th>
+            <td><input type="text" name="" id="QQ" onblur="checkQQ()" th:field="*{qq}"/></td>
+        </tr>
+        <tr>
+            <th>生日</th>
+            <td><input type="text" name="" id="bir" th:field="*{bir}"/></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="提交" id="reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<script type="text/javascript">
+    function checkNumber() {
+        var value = document.addform.tel.value;
+        var len = value.length;
+        for (var i = 0; i < len; i++) {
+            if (value.charAt(i) > "9" || value.charAt(i) < "0") {
+                return false;
+                break;
+            }
+        }
+        if (len !== 11) {
+            return false;
+        }
+        return true;
+    }
+
+    function checkEmail() {
+        var value = document.addform.email.value;
+        var len = value.length;
+        var flag = 0;
+        for (var i = 0; i < len; i++) {
+            if (value.charAt(i) === "@") {
+                flag = 1;
+            }
+        }
+        if (flag == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    function checkQQ() {
+        var value = document.addform.QQ.value;
+        var len = value.length;
+        for (var i = 0; i < len; i++) {
+            if (value.charAt(i) > "9" || value.charAt(i) < "0") {
+                return false;
+                break;
+            }
+        }
+        return true;
+    }
+
+    function check() {
+        if (checkQQ() && checkEmail() && checkNumber()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#tel").blur(function () {
+            var now_tel = document.addform.tel.value;
+            console.log(now_tel);
+            var jsondata = {"now_tel": now_tel};
+            $.ajax({
+                url: "/contact_add/check_phone",
+                Type: "GET",
+                data: jsondata,
+                dataType: "text",
+                success: function (response) {
+                    var r = parseInt(response);
+                    if (r == 0) {
+                        alert("Phone Number Duplicate!");
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

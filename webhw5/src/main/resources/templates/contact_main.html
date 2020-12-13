@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+
+<head>
+    <title>个人通讯录管理系统Ver0.1.4</title>
+</head>
+
+<body>
+<link rel="stylesheet" type="text/css" href="/contact_main.css">
+
+
+<h1 th:text="'欢迎回来,' + ${username} + '！'"></h1>
+<div class="add">
+    <a href="contact_add" title="add">添加</a>
+</div>
+<table border="4" class="contacttable">
+    <tr>
+        <th>姓名</th>
+        <th>电话</th>
+        <th>邮箱</th>
+        <th>住址</th>
+        <th>QQ</th>
+        <th>生日</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="con : ${contact}">
+        <td th:text="${con.name}"></td>
+        <td th:text="${con.tel}"></td>
+        <td th:text="${con.email}"></td>
+        <td th:text="${con.addr}"></td>
+        <td th:text="${con.qq}"></td>
+        <td th:text="${con.bir}"></td>
+        <td>
+            <form th:action="@{'/delete/'+${con.current_id}}" method="post">
+                <input type="submit" name="" value="删除"/>
+            </form>
+
+            <form th:action="@{'/change/'+${con.current_id}}" method="get">
+                <input type="submit" name="" value="更新"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
