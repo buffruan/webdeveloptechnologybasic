@@ -32,11 +32,11 @@
         <td th:text="${con.qq}"></td>
         <td th:text="${con.bir}"></td>
         <td>
-            <form th:action="@{'/delete/'+${con.current_id}}" method="post">
+            <form th:action="@{'/delete/'+${con.id}}" method="post">
                 <input type="submit" name="" value="删除"/>
             </form>
 
-            <form th:action="@{'/change/'+${con.current_id}}" method="get">
+            <form th:action="@{'/change/'+${con.id}}" method="get">
                 <input type="submit" name="" value="更新"/>
             </form>
         </td>

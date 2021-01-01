@@ -119,6 +119,7 @@ public class mainController {
 
     @PostMapping(value = "/change/post/{num}")
     public String changepost(@PathVariable("num") int id, contact con, Model model) {
+        contactRepos.deleteById((long) id);
         contactRepos.save(con);
         return "redirect:/contact_main";
     }
